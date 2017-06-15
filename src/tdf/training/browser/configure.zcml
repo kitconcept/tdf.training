@@ -18,4 +18,46 @@
       directory="static"
       />
 
+  <!-- Training declarations -->
+  <browser:page
+    name="simpleview"
+    for="*"
+    template="templates/simple.pt"
+    permission="zope2.View"
+    />
+
+  <!-- https://training.plone.org/5/mastering_plone/zpt.html -->
+  <browser:page
+    name="projectlisting"
+    for="*"
+    class=".views.ProjectListView"
+    template="templates/projectlist.pt"
+    permission="zope2.View"
+    layer="zope.interface.Interface"
+    />
+
+  <!-- Resources can be overriden in 'overrides' folder (using z3c.jbot)  but
+  they only work for templates. The overrides, normally are controlled by ZCA
+  layers. If you need to add code, you have to go the whole way with a new
+  layered declaration -->
+  <browser:page
+    name="view"
+    for="tdf.extensionuploadcenter.eupproject.IEUpProject"
+    class=".views.CustomEUpProjectView"
+    template="templates/eupproject_view.pt"
+    permission="zope2.View"
+    layer="tdf.training.interfaces.ITdfTrainingLayer"
+    />
+
+  <!-- Viewlet -->
+  <browser:viewlet
+    name="social"
+    for="tdf.extensionuploadcenter.eupproject.IEUpProject"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    class=".viewlets.SayGoodBye"
+    layer="tdf.training.interfaces.ITdfTrainingLayer"
+    template="templates/saygoodbye_viewlet.pt"
+    permission="zope2.View"
+    />
+
 </configure>

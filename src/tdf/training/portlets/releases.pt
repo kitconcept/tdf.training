@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag=""
+      i18n:domain="plone">
+
+<section class="portlet portletActions" role="menu"
+    tal:define="portal_url context/@@plone_portal_state/portal_url;">
+
+  <header class="portletHeader">
+    <span>
+      Portlet Title
+    </span>
+  </header>
+  <section class="portletContent">
+    <ul>
+      <tal:loop tal:repeat="release view/all_releases">
+        <li class="portletItem">
+          <a href="#"
+             tal:attributes="href release/absolute_url">
+
+            <span tal:content="release/title">
+              Release title
+            </span>
+          </a>
+        </li>
+      </tal:loop>
+    </ul>
+  </section>
+</section>
+</html>

@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="tdf.training">
+
+  <include package="plone.app.portlets"/>
+
+  <plone:portlet
+      name="tdf.training.releases"
+      interface=".releases.IReleasesPortlet"
+      assignment=".releases.Assignment"
+      view_permission="zope2.View"
+      edit_permission="cmf.ManagePortal"
+      renderer=".releases.Renderer"
+      addview=".releases.AddForm"
+      editview=".releases.EditForm"
+      />
+
+</configure>
